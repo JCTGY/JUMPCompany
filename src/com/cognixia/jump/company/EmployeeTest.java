@@ -13,11 +13,17 @@ import org.junit.jupiter.api.Test;
 class EmployeeTest {
 	
 	private Connection conn = ConnectionManager.getConnection();
+	private EmployeeDAO test = new EmployeeDAOImpl();
+	
+	private static final int TEST_EMPLOYEE_ID = 0;
+	private static final String TEST_EMPLOYEE_NAME = "testName";
+	private static final String TEST_EMPLOYEE_DEPT = "testDept";
+	private static final String TEST_EMPLOYEE_NUMBER = "1234567890";
+	private static final int TEST_EMPLOYEE_SALARY = 100000;
+	
 	
 	@Test
 	void testGetAllEmployees() throws SQLException {
-		
-		EmployeeDAO test = new EmployeeDAOImpl();
 		
 		List<Employee> result = test.getAllEmployees();
 		
@@ -46,6 +52,12 @@ class EmployeeTest {
 			}
 		}
 		
+	}
+	
+	@Test
+	void testAddEmployee() {
+		Employee emp = new Employee(TEST_EMPLOYEE_ID, TEST_EMPLOYEE_NAME, TEST_EMPLOYEE_DEPT, TEST_EMPLOYEE_NUMBER, TEST_EMPLOYEE_SALARY);
+		assertEquals(true, test.addEmployee(emp));
 	}
 
 }
