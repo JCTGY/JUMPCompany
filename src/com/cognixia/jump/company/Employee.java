@@ -1,19 +1,19 @@
-package com.cognixia.jump.advancedjava.finalproject;
+package com.cognixia.jump.company;
 
 public class Employee {
 
 	private int id;
 	private String name;
 	private String departmentName;
-	private long number;
+	private String number;
 	private int salary;
 
-	public Employee(int id, String name, String departmentName, long number, int salary) {
+	public Employee(int id, String name, String departmentName, String number2, int salary) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.departmentName = departmentName;
-		this.number = number;
+		this.number = number2;
 		this.salary = salary;
 	}
 
