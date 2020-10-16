@@ -42,6 +42,32 @@ public class DepartmentDAOImpl implements DepartmentDAO{
 	@Override
 	public Department getDepartmentByName(String deptName) {
 		
+		ResultSet rs = null;
+		try (PreparedStatement pstmt 
+				= conn.prepareStatement("select * from department where name = ?"); 
+			) {
+			pstmt.setString(1, deptName);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				String name = rs.getString("name");
+				String phone = rs.getString("phone");
+				int budget = rs.getInt("budget");
+				
+				Department dept = new Department(name, phone, budget);
+				return dept;
+			}
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		return null;
 	}
