@@ -42,10 +42,31 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	@Override
-	public Employee getEmployeeById(String employeeId) {
+	public Employee getEmployeeById(int employeeID) {
+	ResultSet rs = null;
+	try(PreparedStatement state = conn.prepareStatement("select * from employee where id_number = ?");
+			){
 		
-		return null;
+		state.setInt(1, employeeID);
+		rs = state.executeQuery();
+		
+		if(rs.next()) {
+			int id = rs.getInt("id_number");
+			String name = rs.getString("name");
+			String deptName = rs.getString("dept_name");
+			String phone = rs.getString("phone_number");
+			int salary = rs.getInt("salary");
+			Employee emp = new Employee(id, name, deptName, phone, salary);
+			return emp;
+		}
+		
+		
+	} catch(SQLException e) {
+		e.printStackTrace();
 	}
+	return null;
+}
+
 
 	@Override
 	public boolean addEmployee(Employee employee) {
