@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeDAOImpl implements EmployeeDAO {
-	
+public class EmployeeDAOImpl implements EmployeeDAO{
 	private Connection conn = ConnectionManager.getConnection();
-
-	@Override
-	public List<Employee> getAllEmployees() {
+	
+	
+	
+public List<Employee> getAllEmployees() {
 		
 		ArrayList<Employee> result = new ArrayList<Employee>();
 		
@@ -67,24 +67,69 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	return null;
 }
 
-
-	@Override
-	public boolean addEmployee(Employee employee) {
+@Override
+public boolean addEmployee(Employee employee) {
+	try  (PreparedStatement state = conn.prepareStatement("insert into employee values(null, ?,?,?,?)");
+			){
+		state.setString(1, employee.getName());
+		state.setInt(2, employee.getSalary());
+		state.setString(3, employee.getNumber());
+		state.setString(4, employee.getDepartmentName());
+		int count = state.executeUpdate();
+		if(count == 1) {
+			return true;
+		}
 		
-		return false;
-	}
-
-	@Override
-	public boolean deleteEmployeebyId(int employeeId) {
 		
-		return false;
+	} catch(SQLException e) {
+		e.printStackTrace();
 	}
+	return false;
+}
 
-	@Override
-	public boolean updateEmployee(Employee employee) {
+@Override
+public boolean deleteEmployeebyId(int employeeId) {
+	try(PreparedStatement state = conn.prepareStatement("delete from employee where id_number = ?");
+			){
 		
-		return false;
+		state.setInt(1, employeeId);
+		int updated = state.executeUpdate();
+		if(updated == 1) {
+			return true;
+		}
+		
+	} catch(SQLException e) {
+		e.printStackTrace();
 	}
-
+		
+		
+	return false;
+}
+//Updates employee phone, salary, and dept by the employee's name. 
+//Employee ID should not be updated in the DB
+//At this time, we don't update employee name. 
+@Override
+public boolean updateEmployee(Employee employee) {
 	
+	try { PreparedStatement state = conn.prepareStatement("update employee set salary = ?, phone_number = ?, dept_name = ? where name = ?");
+	
+		state.setInt(1, employee.getSalary());
+		state.setString(2, employee.getNumber());
+		state.setString(3, employee.getDepartmentName());
+		state.setString(4, employee.getName());
+		
+		int count = state.executeUpdate();
+		if(count == 1) {
+			return true;
+		} 
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	
+	
+	return false;
+}
+	
+
 }

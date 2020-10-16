@@ -118,7 +118,11 @@ public class DepartmentDAOImpl implements DepartmentDAO{
 		final String prepareStatement = 
 									"UPDATE department "
 									+ "SET "
+<<<<<<< HEAD
 									+ "budget = ? , "
+=======
+									+ "budget = ?, "
+>>>>>>> 76fc064ad12440af471375bbb3e7879bbf56b377
 									+ "phone = ? "
 									+ "WHERE name = ?";
 		try (PreparedStatement ptmt = conn.prepareStatement(prepareStatement);
