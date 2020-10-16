@@ -98,12 +98,41 @@ public class DepartmentDAOImpl implements DepartmentDAO{
 	@Override
 	public boolean deleteDepartmentByName(String deptName) {
 		
+		try (PreparedStatement pstmt 
+				= conn.prepareStatement("delete from department where name = ?"); 
+			) {
+			pstmt.setString(1, deptName);
+			int count = pstmt.executeUpdate();
+			if (count > 0) return true;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
-
+	
 	@Override
 	public boolean updateDepartment(Department dept) {
 		
+		final String prepareStatement = 
+									"UPDATE department "
+									+ "SET "
+									+ "buget = ?, "
+									+ "phone = ? "
+									+ "WHERE name = ?";
+		try (PreparedStatement ptmt = conn.prepareStatement(prepareStatement);
+				){
+			ptmt.setInt(1, dept.getBudget());
+			ptmt.setString(2, dept.getPhoneNumber());
+			ptmt.setString(3, dept.getName());
+			int count = ptmt.executeUpdate();
+			if (count > 0) return true;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
 
