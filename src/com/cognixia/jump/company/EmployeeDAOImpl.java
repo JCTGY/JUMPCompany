@@ -75,7 +75,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	@Override
-	public boolean deleteEmployeebyId(String employeeId) {
+	public boolean deleteEmployeebyId(int employeeId) {
 		
 		return false;
 	}
