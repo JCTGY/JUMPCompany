@@ -6,7 +6,7 @@ public interface EmployeeDAO {
 
 	public List<Employee> getAllEmployees();
 	
-	public Employee getEmployeeById(int employeeId);
+	public Employee getEmployeeById(int employeeId) throws EmployeeNotFoundException;
 	
 	public boolean addEmployee(Employee employee);
 	
