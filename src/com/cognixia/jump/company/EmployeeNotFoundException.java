@@ -1,4 +1,4 @@
-package com.cognixia.jump.advancedjava.finalproject;
+package com.cognixia.jump.company;
 
 public class EmployeeNotFoundException extends Exception {
 
