@@ -40,7 +40,7 @@ public class DepartmentDAOImpl implements DepartmentDAO{
 	}
 
 	@Override
-	public Department getDepartmentByName(String deptName) {
+	public Department getDepartmentByName(String deptName) throws DepartmentNotFoundException {
 		
 		ResultSet rs = null;
 		try (PreparedStatement pstmt 
@@ -69,7 +69,7 @@ public class DepartmentDAOImpl implements DepartmentDAO{
 			}
 		}
 		
-		return null;
+		throw new DepartmentNotFoundException(deptName);
 	}
 
 	@Override
