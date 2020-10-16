@@ -5,16 +5,14 @@ public class Employee {
 	private int id;
 	private String name;
 	private String departmentName;
-	private String street;
 	private long number;
 	private int salary;
 
-	public Employee(int id, String name, String departmentName, String street, long number, int salary) {
+	public Employee(int id, String name, String departmentName, long number, int salary) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.departmentName = departmentName;
-		this.street = street;
 		this.number = number;
 		this.salary = salary;
 	}
@@ -43,13 +41,6 @@ public class Employee {
 		this.departmentName = departmentName;
 	}
 
-	public String getStreet() {
-		return street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
  
 	public long getNumber() {
 		return number;
@@ -70,8 +61,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", departmentName=" + departmentName + ", street=" + street
-				+ ", number=" + number + ", salary=" + salary + "]";
+		return "Employee [id=" + id + ", name=" + name + ", departmentName=" + departmentName + ", number=" + number + ", salary=" + salary + "]";
 	}
 	
 	
