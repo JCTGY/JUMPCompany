@@ -42,7 +42,7 @@ public List<Employee> getAllEmployees() {
 	}
 
 	@Override
-	public Employee getEmployeeById(int employeeID) {
+	public Employee getEmployeeById(int employeeID) throws EmployeeNotFoundException {
 	ResultSet rs = null;
 	try(PreparedStatement state = conn.prepareStatement("select * from employee where id_number = ?");
 			){
@@ -64,7 +64,7 @@ public List<Employee> getAllEmployees() {
 	} catch(SQLException e) {
 		e.printStackTrace();
 	}
-	return null;
+	throw new EmployeeNotFoundException(employeeID);
 }
 
 @Override
