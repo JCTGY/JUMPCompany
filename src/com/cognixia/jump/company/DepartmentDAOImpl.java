@@ -75,7 +75,24 @@ public class DepartmentDAOImpl implements DepartmentDAO{
 	@Override
 	public boolean addDepartment(Department dept) {
 		
+		try(PreparedStatement pstmt = conn.prepareStatement("insert into department values(?,?,?)")) {
+			
+			pstmt.setString(1, dept.getName());
+			pstmt.setString(2, dept.getPhoneNumber());
+			pstmt.setInt(3, dept.getBudget());
+			
+			int count = pstmt.executeUpdate();
+			
+			if (count > 0) {
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return false;
+		
 	}
 
 	@Override
