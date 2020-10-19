@@ -288,6 +288,7 @@ public class Menu {
 		String name = in.nextLine();
 		if(d.deleteDepartmentByName(name)) {
 			System.out.println("Department deleted");
+			d.removeEmployees(name);
 		} else {
 			throw new DepartmentNotFoundException(name);
 		}
