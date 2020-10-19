@@ -135,6 +135,23 @@ public class DepartmentDAOImpl implements DepartmentDAO{
 		}
 		return false;
 	}
+	
+	@Override
+	public void removeEmployees(String name) {
+		try (PreparedStatement pstmt 
+				= conn.prepareStatement("update employee set dept_name = ' ' where dept_name = ?"); 
+			) {
+			pstmt.setString(1, name);
+			pstmt.executeUpdate();
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+	}
 
 	
 
