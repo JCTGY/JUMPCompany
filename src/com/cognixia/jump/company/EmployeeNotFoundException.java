@@ -10,5 +10,9 @@ public class EmployeeNotFoundException extends Exception {
 	public EmployeeNotFoundException(int employeeId) {
 		super("Employee with ID " + employeeId + " was not found." );
 	}
+	
+	public EmployeeNotFoundException(String name) {
+		super(name + " was not found" );
+	}
 
 }

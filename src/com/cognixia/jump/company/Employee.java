@@ -1,19 +1,18 @@
 package com.cognixia.jump.company;
 
 public class Employee {
+	int id;
+	public String name;
+	public String departmentName;
+	public String number;
+	public int salary;
 
-	private int id;
-	private String name;
-	private String departmentName;
-	private String number;
-	private int salary;
-
-	public Employee(int id, String name, String departmentName, String number2, int salary) {
+	public Employee(int id, String name, String departmentName, String number, int salary) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.departmentName = departmentName;
-		this.number = number2;
+		this.number = number;
 		this.salary = salary;
 	}
 
@@ -41,6 +40,7 @@ public class Employee {
 		this.departmentName = departmentName;
 	}
 
+
  
 	public String getNumber() {
 		return number;
@@ -61,9 +61,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", departmentName=" + departmentName + ", number=" + number + ", salary=" + salary + "]";
+		return "Employee id=" + id + "\n name=" + name + "\n departmentName=" + departmentName + "\n number=" + number + "\n salary=" + salary + "\n\n";
 	}
 	
-	
-
 }
