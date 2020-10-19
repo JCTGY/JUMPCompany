@@ -129,6 +129,12 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		
 		return false;
 	}
+
+	@Override
+	public boolean doesEmployeeExist(String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 
 }
