@@ -13,5 +13,7 @@ public interface EmployeeDAO {
 	public boolean deleteEmployeebyId(int employeeId);
 	
 	public boolean updateEmployee(Employee employee);
+	
+	public boolean doesEmployeeExist(String name);
 
 }
