@@ -13,5 +13,7 @@ public interface DepartmentDAO {
 	public boolean deleteDepartmentByName(String deptName);
 	
 	public boolean updateDepartment(Department dept);
+	
+	public void removeEmployees(String name);
 
 }
