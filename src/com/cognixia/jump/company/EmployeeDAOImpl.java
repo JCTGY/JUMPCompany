@@ -51,6 +51,15 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 			if ( rs.next()) {
 				return true;
 			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
 	@Override
 	public Employee getEmployeeById(int employeeID) throws EmployeeNotFoundException {
 		ResultSet rs = null;
@@ -138,12 +147,6 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		}
 		
 		
-		return false;
-	}
-
-	@Override
-	public boolean doesEmployeeExist(String name) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
