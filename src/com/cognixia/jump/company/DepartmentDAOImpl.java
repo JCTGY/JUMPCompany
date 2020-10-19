@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DepartmentDAOImpl implements DepartmentDAO{
+public class DepartmentDAOImpl implements DepartmentDAO {
 	
 	private Connection conn = ConnectionManager.getConnection();
 
@@ -96,19 +96,23 @@ public class DepartmentDAOImpl implements DepartmentDAO{
 	}
 
 	@Override
-	public boolean deleteDepartmentByName(String deptName) {
+	public boolean deleteDepartmentByName(String deptName){
 		
 		try (PreparedStatement pstmt 
 				= conn.prepareStatement("delete from department where name = ?"); 
 			) {
 			pstmt.setString(1, deptName);
 			int count = pstmt.executeUpdate();
-			if (count > 0) return true;
-
+			if (count > 0) {
+				return true;
+			
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
+		
 		return false;
 	}
 	
