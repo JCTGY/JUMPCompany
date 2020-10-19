@@ -39,7 +39,18 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		
 		return result;
 	}
-
+	@Override
+	public boolean doesEmployeeExist(String name) {
+		ResultSet rs = null;
+		try (PreparedStatement state = conn.prepareStatement("select * from employee where name = ?");
+				
+			) {
+			
+			state.setString(1, name);
+			rs = state.executeQuery();
+			if ( rs.next()) {
+				return true;
+			}
 	@Override
 	public Employee getEmployeeById(int employeeID) throws EmployeeNotFoundException {
 		ResultSet rs = null;
